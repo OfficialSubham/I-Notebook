@@ -1,13 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
-router.get("/", (request, response) => {
-    let obj  = {
-        hello: "dojkhadad",
-        bjaka: "8374ksdljk"
-    }
+router.get("/", (req, res) => {
+    res.send("hello")
+})
 
-    response.json(obj)
+router.get("/login", (req, res) => {
+    res.send("Login Page");
+})
+
+router.get("/signup", (req, res) => {
+    res.send("Signup Page");
 })
 
 module.exports = router

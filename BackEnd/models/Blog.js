@@ -1,12 +1,13 @@
 const { Schema, default: mongoose } = require("mongoose");
 
-const NotesSchema = new Schema({
+const BlogSchema = new Schema({
     title: {
         type: String,
         required: true
     },
     description: {
-        type: String
+        type: String,
+        required: true
     },
     tag: {
         type: String,
@@ -14,8 +15,8 @@ const NotesSchema = new Schema({
     },
     date: {
         type: Date,
-        default: Date.now
+        default: Date.now()
     }
 });
 
-module.exports = mongoose.model("notes", NotesSchema)
+module.exports = mongoose.model("blogs", BlogSchema)

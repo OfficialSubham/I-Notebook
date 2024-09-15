@@ -7,14 +7,12 @@ const port = 3000
 
 //Available routes
 
-app.use("/api/auth", require("./routes/auth"))
-app.use("/api/notes", require("./routes/notes"))
+app.use("/", require("./routes/auth"))
+app.use("/blog", require("./routes/blog"))
 
 // app.get('/', (req, res) => {
 //   res.send('Hello I am Subham')
 // //   console.log(res);
 // })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+app.listen(port)
