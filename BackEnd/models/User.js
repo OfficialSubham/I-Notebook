@@ -1,4 +1,4 @@
-const { Schema } = require("mongoose");
+const { Schema, mongoose } = require("mongoose");
 //schema is a kind of format used to store data in that format
 const UserSchema = new Schema({
     name: {
@@ -25,4 +25,6 @@ const UserSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model("user", UserSchema)
+const UserModel = mongoose.model("users", UserSchema)
+
+module.exports = UserModel;
