@@ -2,10 +2,10 @@
   "name": "inotebook-backend",
   "version": "1.0.0",
   "description": "I-Notebook on the cloud",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "app js"
+    "dev": "node app.js"
   },
   "author": "",
   "license": "ISC",
