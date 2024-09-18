@@ -142,4 +142,10 @@ router.post("/getuser", getuserdetails, async (req, res) => {
   }
 })
 
+//for my checking
+// router.get("/getalluser", async (req, res) => {
+//   let alluser = await UserModel.find()
+//   res.send(alluser)
+// })
+
 module.exports = router;
