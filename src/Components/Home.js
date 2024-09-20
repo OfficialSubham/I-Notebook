@@ -1,12 +1,38 @@
-import React from 'react'
+import React from "react";
 
 const Home = () => {
   return (
     <>
-    <h3>This is Home</h3>
-    <h1>This is INoteBook</h1>
-    </>
-  )
-}
+      <h2 className="my-3">Add Note Here</h2>
+      <div className="container">
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlInput1" className="form-label">
+            Title
+          </label>
+          <input
+            type="email"
+            className="form-control"
+            id="exampleFormControlInput1"
+            placeholder="name@example.com"
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="exampleFormControlTextarea1" className="form-label">
+            Note
+          </label>
+          <textarea
+            className="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+      <h2 className="my-3">Your Notes</h2>
+      <div className="container">
 
-export default Home
+      </div>
+    </>
+  );
+};
+
+export default Home;
