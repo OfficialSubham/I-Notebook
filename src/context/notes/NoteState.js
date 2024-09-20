@@ -1,15 +1,169 @@
 import NoteContext from "./noteContext";
+import { useState } from "react";
 
 //importing NoteContext to create a context and Use State to defining a state
 const NoteState = (props) => {
+  let initialNote = [
+    {
+      _id: "66eaeb96a1d73e58f0ff37bd",
+      user: "66ea2993926dc74c5f8d12e6",
+      title: "Second timeeee",
+      description:
+        "hieeara aera ar nd bl12og and431 i am very gladhieeara aera ar nd bl12og and431 i am very gladhieeara aera ar nd bl12og and431 i am very gladhieeara aera ar nd bl12og and431 i am very gladhieeara aera ar nd bl12og and431 i am very gladhieeara aera ar nd bl12og and431 i am very gladhieeara aera ar nd bl12og and431 i am very glad",
+      tag: "mine",
+      date: "2024-09-18T15:02:35.261Z",
+      __v: 0,
+    },
+    {
+      _id: "66eaec82859c244fcf301df9",
+      user: "66ea2993926dc74c5f8d12e6",
+      title: "Second timeeee",
+      description:
+        "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
+      tag: "mine",
+      date: "2024-09-18T15:05:57.277Z",
+      __v: 0,
+    },
+    {
+      _id: "66eaec82859c244fcf301df9",
+      user: "66ea2993926dc74c5f8d12e6",
+      title: "Second timeeee",
+      description:
+        "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
+      tag: "mine",
+      date: "2024-09-18T15:05:57.277Z",
+      __v: 0,
+    },
+    {
+      _id: "66eaec82859c244fcf301df9",
+      user: "66ea2993926dc74c5f8d12e6",
+      title: "Second timeeee",
+      description:
+        "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
+      tag: "mine",
+      date: "2024-09-18T15:05:57.277Z",
+      __v: 0,
+    },
+    {
+      _id: "66eaec82859c244fcf301df9",
+      user: "66ea2993926dc74c5f8d12e6",
+      title: "Second timeeee",
+      description:
+        "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
+      tag: "mine",
+      date: "2024-09-18T15:05:57.277Z",
+      __v: 0,
+    },
+    {
+      _id: "66eaec82859c244fcf301df9",
+      user: "66ea2993926dc74c5f8d12e6",
+      title: "Second timeeee",
+      description:
+        "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
+      tag: "mine",
+      date: "2024-09-18T15:05:57.277Z",
+      __v: 0,
+    },
+    {
+        _id: "66eaec82859c244fcf301df9",
+        user: "66ea2993926dc74c5f8d12e6",
+        title: "Second timeeee",
+        description:
+          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
+        tag: "mine",
+        date: "2024-09-18T15:05:57.277Z",
+        __v: 0,
+      },
+      {
+        _id: "66eaec82859c244fcf301df9",
+        user: "66ea2993926dc74c5f8d12e6",
+        title: "Second timeeee",
+        description:
+          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
+        tag: "mine",
+        date: "2024-09-18T15:05:57.277Z",
+        __v: 0,
+      },
+      {
+        _id: "66eaec82859c244fcf301df9",
+        user: "66ea2993926dc74c5f8d12e6",
+        title: "Second timeeee",
+        description:
+          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
+        tag: "mine",
+        date: "2024-09-18T15:05:57.277Z",
+        __v: 0,
+      },
+      {
+        _id: "66eaec82859c244fcf301df9",
+        user: "66ea2993926dc74c5f8d12e6",
+        title: "Second timeeee",
+        description:
+          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
+        tag: "mine",
+        date: "2024-09-18T15:05:57.277Z",
+        __v: 0,
+      },
+      {
+        _id: "66eaec82859c244fcf301df9",
+        user: "66ea2993926dc74c5f8d12e6",
+        title: "Second timeeee",
+        description:
+          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
+        tag: "mine",
+        date: "2024-09-18T15:05:57.277Z",
+        __v: 0,
+      },
+      {
+        _id: "66eaec82859c244fcf301df9",
+        user: "66ea2993926dc74c5f8d12e6",
+        title: "Second timeeee",
+        description:
+          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
+        tag: "mine",
+        date: "2024-09-18T15:05:57.277Z",
+        __v: 0,
+      },
+      {
+        _id: "66eaec82859c244fcf301df9",
+        user: "66ea2993926dc74c5f8d12e6",
+        title: "Second timeeee",
+        description:
+          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
+        tag: "mine",
+        date: "2024-09-18T15:05:57.277Z",
+        __v: 0,
+      },
+      {
+        _id: "66eaec82859c244fcf301df9",
+        user: "66ea2993926dc74c5f8d12e6",
+        title: "Second timeeee",
+        description:
+          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
+        tag: "mine",
+        date: "2024-09-18T15:05:57.277Z",
+        __v: 0,
+      },
+      {
+        _id: "66eaec82859c244fcf301df9",
+        user: "66ea2993926dc74c5f8d12e6",
+        title: "Second timeeee",
+        description:
+          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
+        tag: "mine",
+        date: "2024-09-18T15:05:57.277Z",
+        __v: 0,
+      },
+  ];
 
-    return (
-        //Wraping with NoteContext.Provider Ensure that All the Components can use NoteContext Values
-        <NoteContext.Provider value={{}}>
-            {props.children}
-            {/* Props.Childern ensure that every child underneath can get the value of the state */}
-        </NoteContext.Provider>
-    );
-}
-//Use of context ensure we are not Prop Drilling for using State 
+  const [note, setNote] = useState(initialNote);
+  return (
+    //Wraping with NoteContext.Provider Ensure that All the Components can use NoteContext Values
+    <NoteContext.Provider value={{ note, setNote }}>
+      {props.children}
+      {/* Props.Childern ensure that every child underneath can get the value of the state */}
+    </NoteContext.Provider>
+  );
+};
+//Use of context ensure we are not Prop Drilling for using State
 export default NoteState;

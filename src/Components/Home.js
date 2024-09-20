@@ -1,6 +1,9 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import NoteContext from "../context/notes/noteContext";
+import Note from "./Note";
 const Home = () => {
+  const { note, setNote } = useContext(NoteContext);
+
   return (
     <>
       <h2 className="my-3">Add Note Here</h2>
@@ -28,8 +31,22 @@ const Home = () => {
         </div>
       </div>
       <h2 className="my-3">Your Notes</h2>
-      <div className="container">
-
+      <div className="container  w-100">
+        <div className="row row-cols-auto d-flex justify-content-around">
+          {note.map((noteData) => {
+            let num = 0;
+            num++;
+            return (
+                <Note
+                  title={noteData.title}
+                  tag={noteData.tag}
+                  note={noteData.description}
+                  date={noteData.date}
+                  keyValue={Math.random() * 100 + noteData.tag}
+                />
+            );
+          })}
+        </div>
       </div>
     </>
   );
