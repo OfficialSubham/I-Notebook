@@ -4,19 +4,24 @@ import Navbar from "./Components/Navbar.js";
 import Home from "./Components/Home";
 import About from "./Components/About";
 import NoteState from "./context/notes/NoteState.js";
+import Alert from "./Components/Alert.js";
+import AlertState from "./context/alert/AlertState.js";
 function App() {
   return (
     <>
       <NoteState>
-        <Router>
-          <Navbar />
-          <div className="container">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-            </Routes>
-          </div>
-        </Router>
+        <AlertState>
+          <Router>
+            <Navbar />
+            <Alert />
+            <div className="container">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+              </Routes>
+            </div>
+          </Router>
+        </AlertState>
       </NoteState>
     </>
   );

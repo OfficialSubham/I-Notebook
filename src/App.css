@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+i {
+  cursor: pointer;
+}
+/* 
+body {
+  background-color: #000000;
+} */
