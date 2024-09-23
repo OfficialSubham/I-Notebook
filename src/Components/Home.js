@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import NoteContext from "../context/notes/noteContext";
 import Note from "./Note";
 import AddNote from "./AddNote";
 const Home = () => {
-  const { note } = useContext(NoteContext);
-
+  const { note, getAllNotes } = useContext(NoteContext);
+  useEffect(() => {
+    getAllNotes()
+  }, []);
   return (
     <>
       <AddNote />
@@ -18,7 +20,7 @@ const Home = () => {
                   tag={noteData.tag}
                   note={noteData.description}
                   date={noteData.date}
-                  key={noteData._id}
+                  keyid={noteData._id}
                   id={noteData._id}
                 />
             );

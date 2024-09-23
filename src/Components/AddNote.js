@@ -14,7 +14,7 @@ const AddNote = () => {
 
     const handleNote = (e) => {
         e.preventDefault();
-        addNote(newNote)
+        addNote(newNote.title, newNote.description, newNote.tag)
     }
 
   return (

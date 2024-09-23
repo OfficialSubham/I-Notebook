@@ -3,124 +3,110 @@ import { useState } from "react";
 
 //importing NoteContext to create a context and Use State to defining a state
 const NoteState = (props) => {
-  let initialNote = [
-    {
-        _id: "66eaec82859c24sfgsgsr4fadascf301df9",
-        user: "66ea2993926dc74c5f8d12e6",
-        title: "Second timeeee",
-        description:
-          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
-        tag: "mine",
-        date: "2024-09-18T15:05:57.277Z",
-        __v: 0,
-      },
-      {
-        _id: "66eaec82859cadasdasd44fasdasdcf301df9",
-        user: "66ea2993926dc74c5f8d12e6",
-        title: "Second timeeee",
-        description:
-          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
-        tag: "mine",
-        date: "2024-09-18T15:05:57.277Z",
-        __v: 0,
-      },
-      {
-        _id: "66eaec82859casdafeaq244fcfasdas301df9",
-        user: "66ea2993926dc74c5f8d12e6",
-        title: "Second timeeee",
-        description:
-          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
-        tag: "mine",
-        date: "2024-09-18T15:05:57.277Z",
-        __v: 0,
-      },
-      {
-        _id: "66eaec8285fdfga9c2dasd44fcf301df9",
-        user: "66ea2993926dc74c5f8d12e6",
-        title: "Second timeeee",
-        description:
-          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
-        tag: "mine",
-        date: "2024-09-18T15:05:57.277Z",
-        __v: 0,
-      },
-      {
-        _id: "66eaec82asdasd859c2adsadasd44fcf301df9",
-        user: "66ea2993926dc74c5f8d12e6",
-        title: "Second timeeee",
-        description:
-          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
-        tag: "mine",
-        date: "2024-09-18T15:05:57.277Z",
-        __v: 0,
-      },
-      {
-        _id: "66eaec82859c244fcf3asda0daf1df9",
-        user: "66ea2993926dc74c5f8d12e6",
-        title: "Second timeeee",
-        description:
-          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
-        tag: "mine",
-        date: "2024-09-18T15:05:57.277Z",
-        __v: 0,
-      },
-      {
-        _id: "66eaafafarec82859c24ada4fcf301df9",
-        user: "66ea2993926dc74c5f8d12e6",
-        title: "Second timeeee",
-        description:
-          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
-        tag: "mine",
-        date: "2024-09-18T15:05:57.277Z",
-        __v: 0,
-      },
-      {
-        _id: "66eaec82859cfgs244fcf301dasdasdaf9",
-        user: "66ea2993926dc74c5f8d12e6",
-        title: "Second timeeee",
-        description:
-          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
-        tag: "mine",
-        date: "2024-09-18T15:05:57.277Z",
-        __v: 0,
-      },
-      {
-        _id: "66eaecdaasdas82adsaa859c244fcf301df9",
-        user: "66ea2993926dc74c5f8d12e6",
-        title: "Second timeeee",
-        description:
-          "Thieeara aera ar nd bl12og and431 i am very glad that i did it",
-        tag: "mine",
-        date: "2024-09-18T15:05:57.277Z",
-        __v: 0,
-      },
-  ];
+  const host = "http://localhost:5000"
+  let initialNote = [{
+    _id: '66eaec82859c244fcf301df9',
+    user: '66ea2993926dc74c5f8d12e6',
+    title: 'Second timeeee',
+    description: 'Thieeara aera ar nd bl12og and431 i am very glad that i did it',
+    tag: 'mine',
+    date: '2024-09-18T15:05:57.277Z'
+  },{
+    _id: '66eaec82859c244fcf301df9',
+    user: '66ea2993926dc74c5f8d12e6',
+    title: 'Second timeeee',
+    description: 'Thieeara aera ar nd bl12og and431 i am very glad that i did it',
+    tag: 'mine',
+    date: '2024-09-18T15:05:57.277Z'
+  },{
+    _id: '66eaec82859c244fcf301df9',
+    user: '66ea2993926dc74c5f8d12e6',
+    title: 'Second timeeee',
+    description: 'Thieeara aera ar nd bl12og and431 i am very glad that i did it',
+    tag: 'mine',
+    date: '2024-09-18T15:05:57.277Z'
+  }]
+  const [note, setNote] = useState([]);
 
-  const [note, setNote] = useState(initialNote);
+  //Get All Notes From Backend
+
+  const getAllNotes = async () => {
+    try {
+      const notesData = await fetch(`${host}/blog/fetchblog`, {
+        method: "GET",
+        headers: {
+          'Content-Type': "application/json",
+          "auth-api": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjE4YzI0Y2RkNWZjZjUwMTkyNWY4NyIsImlhdCI6MTcyNzEwNjA4NH0.88wFwLLUwIxes4vJQhdPOOIbm551sYxxw8wp83op_C0"
+        }
+      })
+      const json = await notesData.json()
+      console.log(json);
+      setNote(json)
+      
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
 
   //Add note Feature
 
-  const addNote = (newNote) => {
-    //todo api call
-    console.log("adding a new note");
+  const addNote = async (title, description, tag) => {
+    try {
+        await fetch(`${host}/blog/addblog`, {
+        method: "POST",
+        headers: {
+          'Content-Type': "application/json",
+          "auth-api": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjE4YzI0Y2RkNWZjZjUwMTkyNWY4NyIsImlhdCI6MTcyNzEwNjA4NH0.88wFwLLUwIxes4vJQhdPOOIbm551sYxxw8wp83op_C0"
+        },
+        body: JSON.stringify({title, description, tag})
+      })
+      setNote(note.concat({title, description, tag}))
+      
+    } catch (error) {
+      console.log(error);
+    }
     //concat is used because the note is a array
     //so it added a new note which is a object 
     //to the array
-    setNote(note.concat(newNote))
+    
     // console.log(newNote);
   }
 
 
   //Delete Note Feature
 
-  const deleteNote = (id) => {
-    console.log(`note of this ${id} is deleted`);
+  const deleteNote = async (id) => {
+    try {
+      await fetch(`${host}/blog/deleteblog/${id}`, {
+        method: "DELETE",
+        headers: {
+          'Content-Type': "application/json",
+          "auth-api": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjE4YzI0Y2RkNWZjZjUwMTkyNWY4NyIsImlhdCI6MTcyNzEwNjA4NH0.88wFwLLUwIxes4vJQhdPOOIbm551sYxxw8wp83op_C0"
+        }
+      })
+      const restNotes = note.filter((eachNote) => {
+        return eachNote._id !== id
+      })
+
+      setNote(restNotes)
+      
+    } catch (error) {
+      console.log(error);
+    }
   }
 
 
   //Edit Note Feature
-  const editNote = () => {
-    
+  const editNote = (id, title, description, tag) => {
+    for (let i = 0; i < note.length; i++) {
+      const previousNote = note[i];
+      if(previousNote._id === id) {
+        previousNote.title = title;
+        previousNote.description = description;
+        previousNote.tag = tag;
+      }
+    }
   }
 
 
@@ -129,7 +115,7 @@ const NoteState = (props) => {
 
   return (
     //Wraping with NoteContext.Provider Ensure that All the Components can use NoteContext Values
-    <NoteContext.Provider value={{ note, addNote, deleteNote, editNote }}>
+    <NoteContext.Provider value={{ note, addNote, deleteNote, editNote, getAllNotes }}>
       {props.children}
       {/* Props.Childern ensure that every child underneath can get the value of the state */}
     </NoteContext.Provider>

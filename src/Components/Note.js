@@ -11,6 +11,7 @@ const Note = (props) => {
     <div
       className=" card my-3 mx-2 pb-4"
       style={{ width: "20rem" }}
+      key={props.keyid + props.title}
     >
       <div className="card-body">
           <h5 className="card-title">{props.title}</h5>

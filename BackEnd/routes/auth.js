@@ -68,7 +68,7 @@ router.post(
 
       res.json({ authapi });
     } catch (error) {
-      res.status(500).send("Some Error Occured");
+      res.status(500).json(error);
     }
   }
 );
