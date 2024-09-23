@@ -5,7 +5,7 @@ import { useState } from "react";
 const NoteState = (props) => {
   let initialNote = [
     {
-        _id: "66eaec82859c244fcf301df9",
+        _id: "66eaec82859c24sfgsgsr4fadascf301df9",
         user: "66ea2993926dc74c5f8d12e6",
         title: "Second timeeee",
         description:
@@ -15,7 +15,7 @@ const NoteState = (props) => {
         __v: 0,
       },
       {
-        _id: "66eaec82859c244fcf301df9",
+        _id: "66eaec82859cadasdasd44fasdasdcf301df9",
         user: "66ea2993926dc74c5f8d12e6",
         title: "Second timeeee",
         description:
@@ -25,7 +25,7 @@ const NoteState = (props) => {
         __v: 0,
       },
       {
-        _id: "66eaec82859c244fcf301df9",
+        _id: "66eaec82859casdafeaq244fcfasdas301df9",
         user: "66ea2993926dc74c5f8d12e6",
         title: "Second timeeee",
         description:
@@ -35,7 +35,7 @@ const NoteState = (props) => {
         __v: 0,
       },
       {
-        _id: "66eaec82859c244fcf301df9",
+        _id: "66eaec8285fdfga9c2dasd44fcf301df9",
         user: "66ea2993926dc74c5f8d12e6",
         title: "Second timeeee",
         description:
@@ -45,7 +45,7 @@ const NoteState = (props) => {
         __v: 0,
       },
       {
-        _id: "66eaec82859c244fcf301df9",
+        _id: "66eaec82asdasd859c2adsadasd44fcf301df9",
         user: "66ea2993926dc74c5f8d12e6",
         title: "Second timeeee",
         description:
@@ -55,7 +55,7 @@ const NoteState = (props) => {
         __v: 0,
       },
       {
-        _id: "66eaec82859c244fcf301df9",
+        _id: "66eaec82859c244fcf3asda0daf1df9",
         user: "66ea2993926dc74c5f8d12e6",
         title: "Second timeeee",
         description:
@@ -65,7 +65,7 @@ const NoteState = (props) => {
         __v: 0,
       },
       {
-        _id: "66eaec82859c244fcf301df9",
+        _id: "66eaafafarec82859c24ada4fcf301df9",
         user: "66ea2993926dc74c5f8d12e6",
         title: "Second timeeee",
         description:
@@ -75,7 +75,7 @@ const NoteState = (props) => {
         __v: 0,
       },
       {
-        _id: "66eaec82859c244fcf301df9",
+        _id: "66eaec82859cfgs244fcf301dasdasdaf9",
         user: "66ea2993926dc74c5f8d12e6",
         title: "Second timeeee",
         description:
@@ -85,7 +85,7 @@ const NoteState = (props) => {
         __v: 0,
       },
       {
-        _id: "66eaec82859c244fcf301df9",
+        _id: "66eaecdaasdas82adsaa859c244fcf301df9",
         user: "66ea2993926dc74c5f8d12e6",
         title: "Second timeeee",
         description:
@@ -113,8 +113,8 @@ const NoteState = (props) => {
 
   //Delete Note Feature
 
-  const deleteNote = () => {
-    
+  const deleteNote = (id) => {
+    console.log(`note of this ${id} is deleted`);
   }
 
 

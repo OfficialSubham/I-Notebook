@@ -37,8 +37,14 @@
   }
 }
 
-i {
+.dustbin, .edit {
+  width: 10px;
+  height: 20px;
+  transition: all 0.15s;
+}
+.dustbin:hover, .edit:hover {
   cursor: pointer;
+  font-size: 22px;
 }
 /* 
 body {

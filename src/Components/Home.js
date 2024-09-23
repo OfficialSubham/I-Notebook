@@ -18,7 +18,8 @@ const Home = () => {
                   tag={noteData.tag}
                   note={noteData.description}
                   date={noteData.date}
-                  keyValue={Math.random() * 100 + noteData.tag}
+                  key={noteData._id}
+                  id={noteData._id}
                 />
             );
           })}

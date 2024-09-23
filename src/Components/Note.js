@@ -1,12 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
 import Tag from "./Tag";
-
+import NoteContext from "../context/notes/noteContext";
 const Note = (props) => {
+  let {deleteNote} = useContext(NoteContext)
+  const noteToBeDelete = () => {
+    deleteNote(props.id)
+  };
+
   return (
     <div
       className=" card my-3 mx-2 pb-4"
       style={{ width: "20rem" }}
-      key={props.keyValue}
     >
       <div className="card-body">
           <h5 className="card-title">{props.title}</h5>
@@ -19,8 +23,8 @@ const Note = (props) => {
       </div>
  
         <div className="d-flex mt-2">
-            <i className="fa-solid fa-trash mx-4" style={{color: "red"}}></i>
-            <i className="fa-regular fa-pen-to-square" style={{color: "blue"}}></i>
+            <i className="fa-solid fa-trash mx-4 dustbin" style={{color: "red"}} onClick={noteToBeDelete}></i>
+            <i className="fa-regular fa-pen-to-square edit" style={{color: "blue"}}></i>
         </div>
 
     </div>

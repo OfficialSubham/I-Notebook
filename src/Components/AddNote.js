@@ -2,7 +2,7 @@ import React, {useContext, useState} from "react";
 import NoteContext from "../context/notes/noteContext";
 
 const AddNote = () => {
-  const { note, addNote, deleteNote, editNote } = useContext(NoteContext);
+  const {addNote} = useContext(NoteContext);
     const [newNote, setNewNote] = useState({"title": "", "description": "", "tag": ""});
     const onChange = (e) => {
         setNewNote({...newNote, [e.target.name]: e.target.value})
@@ -59,7 +59,7 @@ const AddNote = () => {
             onChange={onChange}
           />
         </div>
-        <button className="btn btn-primary" onClick={handleNote}>Submit</button>
+        <button className="btn btn-primary" onClick={handleNote}>Add a Note</button>
       </div>
     </>
   );
