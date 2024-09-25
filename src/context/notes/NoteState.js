@@ -1,10 +1,9 @@
 import NoteContext from "./noteContext";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 //importing NoteContext to create a context and Use State to defining a state
 const NoteState = (props) => {
   const host = "http://localhost:5000"
-  const isNoteEditing = false;
   const [note, setNote] = useState([]);
   const [updateThisNote, setUpdateThisNote] = useState({
     title: "",
@@ -23,7 +22,6 @@ const NoteState = (props) => {
         }
       })
       const json = await notesData.json()
-      console.log(json);
       setNote(json)
       
     } catch (error) {

@@ -7,7 +7,7 @@ const Alert = () => {
     const {alert, useAlert} = useContext(AlertContext)
   return (
     <>
-      <div className="alert alert-primary" role="alert">
+      <div className="alert alert-primary my-5" role="alert">
         <strong>{alert.work}</strong>
         {alert.message}
       </div>

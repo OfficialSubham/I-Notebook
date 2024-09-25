@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import NoteContext from "../context/notes/noteContext";
 
 const AddNote = () => {
-  const { addNote} = useContext(NoteContext);
+  const { addNote } = useContext(NoteContext);
   const [newNote, setNewNote] = useState({
     title: "",
     description: "",
@@ -18,10 +18,16 @@ const AddNote = () => {
 
   const handleNote = (e) => {
     e.preventDefault();
-    const {title, description, tag} = newNote
-    if(title && description ) {
+    const { title, description, tag } = newNote;
+    if (title.length > 5 && description.length > 5) {
       addNote(title, description, tag);
+      setNewNote({
+        title: "",
+        description: "",
+        tag: "",
+      })
     }
+
   };
 
   return (
@@ -39,6 +45,7 @@ const AddNote = () => {
             placeholder="Title"
             name="title"
             onChange={onChange}
+            value={newNote.title}
           />
         </div>
         <div className="mb-3">
@@ -51,6 +58,7 @@ const AddNote = () => {
             rows="3"
             name="description"
             onChange={onChange}
+            value={newNote.description}
           ></textarea>
         </div>
         <div className="mb-3">
@@ -64,12 +72,16 @@ const AddNote = () => {
             placeholder="Tag"
             name="tag"
             onChange={onChange}
+            value={newNote.tag}
           />
         </div>
         <div className="container">
           <button
             className="btn btn-primary js-add-note-button"
             onClick={handleNote}
+            disabled={
+              newNote.title.length < 5 || newNote.description.length < 5
+            }
           >
             Add a Note
           </button>
