@@ -1,29 +1,29 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import NoteContext from "../context/notes/noteContext";
 import Note from "./Note";
 import AddNote from "./AddNote";
+import Modal from "./Modal";
 const Home = () => {
-  const { note, getAllNotes } = useContext(NoteContext);
+  const { note, getAllNotes, setUpdateThisNote, editNote } = useContext(NoteContext);
   useEffect(() => {
-    getAllNotes()
+    // eslint-disable-next-line
+    getAllNotes();
   }, []);
+
+  const updateNote =(currentNote)=> {
+    setUpdateThisNote(currentNote)
+  }
+
+
   return (
     <>
       <AddNote />
+      <Modal />
       <h2 className="my-3">Your Notes</h2>
       <div className="container  w-100">
         <div className="row row-cols-auto d-flex justify-content-around">
           {note.map((noteData) => {
-            return (
-                <Note
-                  title={noteData.title}
-                  tag={noteData.tag}
-                  note={noteData.description}
-                  date={noteData.date}
-                  keyid={noteData._id}
-                  id={noteData._id}
-                />
-            );
+            return <Note noteData={noteData} key={noteData._id} updateNote={updateNote}/>;
           })}
         </div>
       </div>

@@ -1,33 +1,16 @@
 import NoteContext from "./noteContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //importing NoteContext to create a context and Use State to defining a state
 const NoteState = (props) => {
   const host = "http://localhost:5000"
-  let initialNote = [{
-    _id: '66eaec82859c244fcf301df9',
-    user: '66ea2993926dc74c5f8d12e6',
-    title: 'Second timeeee',
-    description: 'Thieeara aera ar nd bl12og and431 i am very glad that i did it',
-    tag: 'mine',
-    date: '2024-09-18T15:05:57.277Z'
-  },{
-    _id: '66eaec82859c244fcf301df9',
-    user: '66ea2993926dc74c5f8d12e6',
-    title: 'Second timeeee',
-    description: 'Thieeara aera ar nd bl12og and431 i am very glad that i did it',
-    tag: 'mine',
-    date: '2024-09-18T15:05:57.277Z'
-  },{
-    _id: '66eaec82859c244fcf301df9',
-    user: '66ea2993926dc74c5f8d12e6',
-    title: 'Second timeeee',
-    description: 'Thieeara aera ar nd bl12og and431 i am very glad that i did it',
-    tag: 'mine',
-    date: '2024-09-18T15:05:57.277Z'
-  }]
+  const isNoteEditing = false;
   const [note, setNote] = useState([]);
-
+  const [updateThisNote, setUpdateThisNote] = useState({
+    title: "",
+    description: "",
+    tag: ""
+  });
   //Get All Notes From Backend
 
   const getAllNotes = async () => {
@@ -98,24 +81,47 @@ const NoteState = (props) => {
 
 
   //Edit Note Feature
-  const editNote = (id, title, description, tag) => {
-    for (let i = 0; i < note.length; i++) {
-      const previousNote = note[i];
-      if(previousNote._id === id) {
-        previousNote.title = title;
-        previousNote.description = description;
-        previousNote.tag = tag;
-      }
-    }
-  }
+  const editNote = async () => {
+    try {
+      //api call
+      const {title, description, tag} = updateThisNote
+      await fetch(`${host}/blog/updateBlog/${updateThisNote._id}`, {
+        method: "PUT",
+        headers: {
+          'Content-Type': "application/json",
+          "auth-api": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZjE4YzI0Y2RkNWZjZjUwMTkyNWY4NyIsImlhdCI6MTcyNzEwNjA4NH0.88wFwLLUwIxes4vJQhdPOOIbm551sYxxw8wp83op_C0"
+        },
+        body: JSON.stringify({title, description, tag})
+      })
 
+      //frontend work
+      for (let i = 0; i < note.length; i++) {
+        const previousNote = note[i];
+        if(previousNote._id === updateThisNote._id) {
+          previousNote.title = title
+          previousNote.description = description
+          previousNote.tag = tag
+        }
+    
+      }
+     
+      const updatedNotes = note.map((eachNote) => {
+        return eachNote
+      })
+      setNote(updatedNotes)
+      
+    } catch (error) {
+      console.log(error);
+    }
+  
+  }
 
 
 
 
   return (
     //Wraping with NoteContext.Provider Ensure that All the Components can use NoteContext Values
-    <NoteContext.Provider value={{ note, addNote, deleteNote, editNote, getAllNotes }}>
+    <NoteContext.Provider value={{ note, addNote, deleteNote, editNote, getAllNotes, updateThisNote, setUpdateThisNote}}>
       {props.children}
       {/* Props.Childern ensure that every child underneath can get the value of the state */}
     </NoteContext.Provider>

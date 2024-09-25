@@ -1,21 +1,28 @@
-import React, {useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import NoteContext from "../context/notes/noteContext";
 
 const AddNote = () => {
-  const {addNote} = useContext(NoteContext);
-    const [newNote, setNewNote] = useState({"title": "", "description": "", "tag": ""});
-    const onChange = (e) => {
-        setNewNote({...newNote, [e.target.name]: e.target.value})
-        //above syntax show that first distribute all the
-        //values in newNote then if any change happen
-        //then if it has same value of name then rewrite it
-        //else add the new value
-    }
+  const { addNote} = useContext(NoteContext);
+  const [newNote, setNewNote] = useState({
+    title: "",
+    description: "",
+    tag: "",
+  });
+  const onChange = (e) => {
+    setNewNote({ ...newNote, [e.target.name]: e.target.value });
+    //above syntax show that first distribute all the
+    //values in newNote then if any change happen
+    //then if it has same value of name then rewrite it
+    //else add the new value
+  };
 
-    const handleNote = (e) => {
-        e.preventDefault();
-        addNote(newNote.title, newNote.description, newNote.tag)
+  const handleNote = (e) => {
+    e.preventDefault();
+    const {title, description, tag} = newNote
+    if(title && description ) {
+      addNote(title, description, tag);
     }
+  };
 
   return (
     <>
@@ -27,7 +34,7 @@ const AddNote = () => {
           </label>
           <input
             type="text"
-            className="form-control"
+            className="form-control js-title-input"
             id="title"
             placeholder="Title"
             name="title"
@@ -39,7 +46,7 @@ const AddNote = () => {
             Note
           </label>
           <textarea
-            className="form-control"
+            className="form-control js-note-input"
             id="exampleFormControlTextarea1"
             rows="3"
             name="description"
@@ -52,14 +59,21 @@ const AddNote = () => {
           </label>
           <input
             type="text"
-            className="form-control"
+            className="form-control js-tag-input"
             id="title"
             placeholder="Tag"
             name="tag"
             onChange={onChange}
           />
         </div>
-        <button className="btn btn-primary" onClick={handleNote}>Add a Note</button>
+        <div className="container">
+          <button
+            className="btn btn-primary js-add-note-button"
+            onClick={handleNote}
+          >
+            Add a Note
+          </button>
+        </div>
       </div>
     </>
   );
