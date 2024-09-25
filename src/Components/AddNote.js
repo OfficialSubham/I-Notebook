@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import NoteContext from "../context/notes/noteContext";
+import ModeContext from "../context/Mode/ModeContext.js";
 
 const AddNote = () => {
   const { addNote } = useContext(NoteContext);
@@ -8,6 +9,7 @@ const AddNote = () => {
     description: "",
     tag: "",
   });
+  const {theme} = useContext(ModeContext)
   const onChange = (e) => {
     setNewNote({ ...newNote, [e.target.name]: e.target.value });
     //above syntax show that first distribute all the
@@ -42,10 +44,10 @@ const AddNote = () => {
             type="text"
             className="form-control js-title-input"
             id="title"
-            placeholder="Title"
             name="title"
             onChange={onChange}
             value={newNote.title}
+            style={{...theme}}
           />
         </div>
         <div className="mb-3">
@@ -59,6 +61,7 @@ const AddNote = () => {
             name="description"
             onChange={onChange}
             value={newNote.description}
+            style={{...theme}}
           ></textarea>
         </div>
         <div className="mb-3">
@@ -69,10 +72,10 @@ const AddNote = () => {
             type="text"
             className="form-control js-tag-input"
             id="title"
-            placeholder="Tag"
             name="tag"
             onChange={onChange}
             value={newNote.tag}
+            style={{...theme}}
           />
         </div>
         <div className="container">

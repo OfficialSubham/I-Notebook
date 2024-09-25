@@ -1,12 +1,29 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import ModeContext from "../context/Mode/ModeContext";
 
 const Login = () => {
+  const host = "http://localhost:5000";
   const [userDetails, setUserDetails] = useState({
     username: "",
     password: "",
   });
-  const handleLogin = async () => {};
+  const {theme} = useContext(ModeContext)
+  const handleLogin = async () => {
+    const { username, password } = userDetails;
+    const loginDetails = await fetch(`${host}/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    });
+    let details = await loginDetails.json()
+    console.log(details);
+  };
   const onChange = (e) => {
     setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
@@ -20,6 +37,7 @@ const Login = () => {
           justifyContent: "center",
           flexDirection: "column",
           alignItems: "center",
+          ...theme
         }}
       >
         <div className="row g-3 align-items-center mb-5">
@@ -37,6 +55,7 @@ const Login = () => {
               onChange={onChange}
               value={userDetails.username}
               name="username"
+              style={{...theme}}
             />
           </div>
         </div>
@@ -55,6 +74,7 @@ const Login = () => {
               onChange={onChange}
               value={userDetails.password}
               name="password"
+              style={{...theme}}
             />
           </div>
         </div>

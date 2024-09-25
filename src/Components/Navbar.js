@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
+import ModeContext from "../context/Mode/ModeContext";
 
-const Navbar = () => {
+const Navbar = (props) => {
   let location = useLocation();
-
+  let { theme, setTheme } = useContext(ModeContext);
+  const changeTheme = () => {
+    if (theme.color === "#fff") {
+      setTheme({
+        backgroundColor: "#fff",
+        color: "#000",
+      });
+      props.setHomeTheme({
+        backgroundColor: "#fff",
+        color: "#000",
+      });
+    } else {
+      setTheme({
+        backgroundColor: "#121212",
+        color: "#fff",
+      });
+      props.setHomeTheme({
+        backgroundColor: "#121212",
+        color: "#fff",
+      });
+    }
+  };
   return (
     <>
       <nav
@@ -49,8 +71,18 @@ const Navbar = () => {
                 </Link>
               </li>
             </ul>
+            <div className="form-check form-switch">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id="flexSwitchCheckChecked"
+                onClick={changeTheme}
+              />
+            </div>
             <form className="d-flex" role="search">
-            <Link className="btn btn-primary" to="/login" role="button">Login!</Link>
+              <Link className="btn btn-primary" to="/login" role="button">
+                Login!
+              </Link>
             </form>
           </div>
         </div>

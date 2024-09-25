@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import ModeContext from "../context/Mode/ModeContext";
 const Signup = () => {
+
+  const {theme} = useContext(ModeContext)
+
   return (
     <>
       <div
@@ -11,6 +15,7 @@ const Signup = () => {
           justifyContent: "center",
           flexDirection: "column",
           alignItems: "center",
+          ...theme
         }}
       >
         <div className="container">
@@ -20,8 +25,8 @@ const Signup = () => {
           <input
             className="form-control"
             type="text"
-            placeholder="Name..."
             aria-label="default input example"
+            style={{...theme}}
           ></input>
         </div>
         <div className="container">
@@ -31,8 +36,8 @@ const Signup = () => {
           <input
             className="form-control"
             type="text"
-            placeholder="username..."
             aria-label="default input example"
+            style={{...theme}}
           ></input>
         </div>
         <div className="container">
@@ -43,7 +48,7 @@ const Signup = () => {
             type="email"
             className="form-control"
             id="exampleFormControlInput1"
-            placeholder="name@example.com"
+            style={{...theme}}
           />
         </div>
 
@@ -56,6 +61,7 @@ const Signup = () => {
             id="inputPassword6"
             className="form-control"
             aria-describedby="passwordHelpInline"
+            style={{...theme}}
           />
         </div>
         <div className="container my-3">
