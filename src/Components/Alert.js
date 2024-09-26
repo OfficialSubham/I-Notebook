@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+import AlertContext from "../context/Alert/AlertContext";
 
-const Alert = (props) => {
+
+const Alert = () => {
+  const {alert} = useContext(AlertContext)
   return (
     <>
-      <div
-        className="alert alert-primary my-5"
+      {alert.work.length > 0 && <div
+        className={`alert alert-${alert.type} my-5`}
         role="alert"
         style={{ height: "60px" }}
       >
-        <strong>{props.alert.work}</strong>
-        {props.alert.message}
-      </div>
+        <strong>{alert.work}</strong>
+        {alert.message}
+      </div>}
     </>
   );
 };

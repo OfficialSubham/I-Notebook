@@ -1,14 +1,17 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import ModeContext from "../context/Mode/ModeContext";
-
+import AlertContext from "../context/Alert/AlertContext"
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const {theme} = useContext(ModeContext)
+  const {showTheAlert} = useContext(AlertContext)
   const host = "http://localhost:5000";
   const [userDetails, setUserDetails] = useState({
     username: "",
     password: "",
   });
-  const {theme} = useContext(ModeContext)
+  const navigate = useNavigate()
   const handleLogin = async () => {
     const { username, password } = userDetails;
     const loginDetails = await fetch(`${host}/login`, {
@@ -21,8 +24,16 @@ const Login = () => {
         password,
       }),
     });
-    let details = await loginDetails.json()
-    console.log(details);
+    if(loginDetails.ok === true) {
+      showTheAlert("Logged In : ", "You Are now Logged In")
+      let details = await loginDetails.json()
+      console.log(details);
+      localStorage.setItem("token", details.authapi)
+      navigate("/")
+    }
+    else {
+      showTheAlert("Invalid : ", "Wrong Username Or Passoword", "danger")
+    }
   };
   const onChange = (e) => {
     setUserDetails({ ...userDetails, [e.target.name]: e.target.value });

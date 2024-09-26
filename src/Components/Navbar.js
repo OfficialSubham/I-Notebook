@@ -93,7 +93,7 @@ const Navbar = (props) => {
         </div>
       </nav>
       <div style={{ height: "70px", width: "100vw", marginTop: "55px"}}>
-        {alert.work.length > 0 && <Alert alert={alert} />}
+        { <Alert alert={alert} />}
       </div>
     </>
   );

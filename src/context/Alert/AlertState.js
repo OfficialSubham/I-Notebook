@@ -5,18 +5,21 @@ const AlertState = (props) => {
 
     const [alert, setAlert] = useState({
         work: "",
-        message: ""
+        message: "",
+        type: "primary"
     });
 
-    const showTheAlert = (work, message) => {
+    const showTheAlert = (work, message, type="primary") => {
         setAlert({
             work,
-            message
+            message,
+            type
         })
         setTimeout(() => {
             setAlert({
               work: "",
               message: "",
+              
             });
           }, 2000);
     };
