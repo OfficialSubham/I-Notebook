@@ -4,18 +4,20 @@ import Navbar from "./Components/Navbar.js";
 import Home from "./Components/Home";
 import About from "./Components/About";
 import NoteState from "./context/notes/NoteState.js";
-import Alert from "./Components/Alert.js";
-import AlertState from "./context/alert/AlertState.js";
 import Login from "./Components/Login.js";
 import Signup from "./Components/Signup.js";
 import ModeState from "./context/Mode/ModeState.js";
 import { useState } from "react";
+import AlertState from "./context/Alert/AlertState.js";
+
 
 function App() {
   const [homeTheme, setHomeTheme] = useState({
     backgroundColor: "#121212",
     color: "#fff",
   });
+
+
   return (
     <>
       <div
@@ -27,11 +29,10 @@ function App() {
         }}
       >
         <ModeState>
-          <NoteState>
-            <AlertState>
+          <AlertState>
+            <NoteState>
               <Router>
                 <Navbar setHomeTheme={setHomeTheme} />
-                <Alert />
                 <div
                   className="container"
                   style={{
@@ -42,15 +43,18 @@ function App() {
                   }}
                 >
                   <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route
+                      path="/"
+                      element={<Home />}
+                    />
                     <Route path="/about" element={<About />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
                   </Routes>
                 </div>
               </Router>
-            </AlertState>
-          </NoteState>
+            </NoteState>
+          </AlertState>
         </ModeState>
       </div>
     </>

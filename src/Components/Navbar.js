@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import ModeContext from "../context/Mode/ModeContext";
-
+import AlertContext from "../context/Alert/AlertContext.js";
+import Alert from "./Alert.js";
 const Navbar = (props) => {
+
   let location = useLocation();
   let { theme, setTheme } = useContext(ModeContext);
   const changeTheme = () => {
@@ -26,6 +28,9 @@ const Navbar = (props) => {
       });
     }
   };
+
+    const {alert} = useContext(AlertContext)
+
   return (
     <>
       <nav
@@ -87,6 +92,9 @@ const Navbar = (props) => {
           </div>
         </div>
       </nav>
+      <div style={{ height: "70px", width: "100vw", marginTop: "55px"}}>
+        {alert.work.length > 0 && <Alert alert={alert} />}
+      </div>
     </>
   );
 };

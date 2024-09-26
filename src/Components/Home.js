@@ -3,7 +3,7 @@ import NoteContext from "../context/notes/noteContext";
 import Note from "./Note";
 import AddNote from "./AddNote";
 import Modal from "./Modal";
-const Home = () => {
+const Home = (props) => {
   const { note, getAllNotes, setUpdateThisNote } = useContext(NoteContext);
   useEffect(() => {
     // eslint-disable-next-line

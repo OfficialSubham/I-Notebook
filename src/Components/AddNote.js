@@ -1,15 +1,17 @@
 import React, { useContext, useState } from "react";
 import NoteContext from "../context/notes/noteContext";
 import ModeContext from "../context/Mode/ModeContext.js";
+import AlertContext from "../context/Alert/AlertContext.js";
 
 const AddNote = () => {
   const { addNote } = useContext(NoteContext);
+  const {theme} = useContext(ModeContext)
+  const {showTheAlert} = useContext(AlertContext)
   const [newNote, setNewNote] = useState({
     title: "",
     description: "",
     tag: "",
   });
-  const {theme} = useContext(ModeContext)
   const onChange = (e) => {
     setNewNote({ ...newNote, [e.target.name]: e.target.value });
     //above syntax show that first distribute all the
@@ -28,14 +30,15 @@ const AddNote = () => {
         description: "",
         tag: "",
       })
+      showTheAlert("Success : ", "New Note is added")
     }
 
   };
 
   return (
     <>
-      <h2 className="my-3">Add Note Here</h2>
       <div className="container">
+      <h2 className="my-3">Add Note Here</h2>
         <div className="mb-3">
           <label htmlFor="title" className="form-label">
             Title
