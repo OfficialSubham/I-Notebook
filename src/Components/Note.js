@@ -2,11 +2,14 @@ import React, { useContext } from "react";
 import Tag from "./Tag";
 import NoteContext from "../context/notes/noteContext";
 import ModeContext from "../context/Mode/ModeContext";
+import AlertContext from "../context/Alert/AlertContext";
 
 const Note = (props) => {
   let { deleteNote } = useContext(NoteContext);
+  const {showTheAlert} = useContext(AlertContext)
   const noteToBeDelete = () => {
     deleteNote(props.noteData._id);
+    showTheAlert("Deleted : ", "Note is Deleted", "success")
   };
   let tagArray;
   if (props.noteData.tag) {

@@ -4,6 +4,7 @@ import ModeContext from "../context/Mode/ModeContext";
 import AlertContext from "../context/Alert/AlertContext.js";
 import Alert from "./Alert.js";
 const Navbar = (props) => {
+  const {alert, showTheAlert} = useContext(AlertContext)
 
   let location = useLocation();
   let { theme, setTheme } = useContext(ModeContext);
@@ -17,6 +18,7 @@ const Navbar = (props) => {
         backgroundColor: "#fff",
         color: "#000",
       });
+      showTheAlert("Light : ", "Light Mode Enabled", "success")
     } else {
       setTheme({
         backgroundColor: "#121212",
@@ -26,10 +28,10 @@ const Navbar = (props) => {
         backgroundColor: "#121212",
         color: "#fff",
       });
+      showTheAlert("Dark : ", "Dark Mode Enabled", "success")
     }
   };
 
-    const {alert} = useContext(AlertContext)
 
   return (
     <>

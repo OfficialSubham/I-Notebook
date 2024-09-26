@@ -1,5 +1,6 @@
+import AlertContext from "../Alert/AlertContext";
 import NoteContext from "./noteContext";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 //importing NoteContext to create a context and Use State to defining a state
 const NoteState = (props) => {
@@ -10,6 +11,7 @@ const NoteState = (props) => {
     description: "",
     tag: ""
   });
+  const {showTheAlert} = useContext(AlertContext)
   //Get All Notes From Backend
 
   const getAllNotes = async () => {
@@ -107,7 +109,7 @@ const NoteState = (props) => {
         return eachNote
       })
       setNote(updatedNotes)
-      
+      showTheAlert("Edited : ", "Note is Edited", "success")
     } catch (error) {
       console.log(error);
     }

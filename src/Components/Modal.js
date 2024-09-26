@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
 import NoteContext from "../context/notes/noteContext";
+import ModeContext from "../context/Mode/ModeContext";
 
 const Modal = (props) => {
-  const { editNote, updateThisNote, setUpdateThisNote } = useContext(NoteContext);
-
+  const { editNote, updateThisNote, setUpdateThisNote } =
+    useContext(NoteContext);
+  const { theme } = useContext(ModeContext);
   const onChange = (e) => {
     setUpdateThisNote({ ...updateThisNote, [e.target.name]: e.target.value });
     //above syntax show that first distribute all the
@@ -17,7 +19,6 @@ const Modal = (props) => {
     editNote();
   };
 
-
   return (
     <>
       <div
@@ -28,7 +29,12 @@ const Modal = (props) => {
         aria-hidden="true"
       >
         <div className="modal-dialog modal-dialog-centered">
-          <div className="modal-content">
+          <div
+            className="modal-content"
+            style={{
+              ...theme,
+            }}
+          >
             <div className="modal-header">
               <div className="modal-body">
                 <div className="container d-flex mb-4">
@@ -37,9 +43,11 @@ const Modal = (props) => {
                   </h1>
                   <button
                     type="button"
-                    className="btn-close"
+                    className={`btn-close ${theme.color === "#fff" && "btn-close-white"}`}
                     data-bs-dismiss="modal"
+                    data-bs-theme="light"
                     aria-label="Close"
+                  
                   ></button>
                 </div>
 
@@ -56,6 +64,9 @@ const Modal = (props) => {
                       name="title"
                       onChange={onChange}
                       value={updateThisNote.title}
+                      style={{
+                        ...theme
+                      }}
                     />
                   </div>
                   <div className="mb-3">
@@ -72,6 +83,9 @@ const Modal = (props) => {
                       name="description"
                       onChange={onChange}
                       value={updateThisNote.description}
+                      style={{
+                        ...theme
+                      }}
                     ></textarea>
                   </div>
                   <div className="mb-3">
@@ -86,6 +100,9 @@ const Modal = (props) => {
                       name="tag"
                       onChange={onChange}
                       value={updateThisNote.tag}
+                      style={{
+                        ...theme
+                      }}
                     />
                   </div>
                 </div>
@@ -111,7 +128,6 @@ const Modal = (props) => {
           </div>
         </div>
       </div>
-
     </>
   );
 };
