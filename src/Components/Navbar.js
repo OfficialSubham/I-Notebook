@@ -5,7 +5,6 @@ import AlertContext from "../context/Alert/AlertContext.js";
 import Alert from "./Alert.js";
 const Navbar = (props) => {
   const {alert, showTheAlert} = useContext(AlertContext)
-
   let location = useLocation();
   let { theme, setTheme } = useContext(ModeContext);
   const changeTheme = () => {
@@ -32,6 +31,9 @@ const Navbar = (props) => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+  }
 
   return (
     <>
@@ -78,7 +80,7 @@ const Navbar = (props) => {
                 </Link>
               </li>
             </ul>
-            <div className="form-check form-switch">
+            <div className="form-check form-switch mx-3">
               <input
                 className="form-check-input"
                 type="checkbox"
@@ -86,11 +88,21 @@ const Navbar = (props) => {
                 onClick={changeTheme}
               />
             </div>
+            {localStorage.getItem("token") ? 
+            <Link className="btn btn-primary" onClick={handleLogout} role="button">
+                Logout
+              </Link>
+               
+            : 
             <form className="d-flex" role="search">
-              <Link className="btn btn-primary" to="/login" role="button">
+            <Link className="btn btn-primary mx-3"  to="/login" role="button">
                 Login!
               </Link>
+              <Link className="btn btn-primary"  to="/signup" role="button">
+                Sign Up!
+              </Link>
             </form>
+              }
           </div>
         </div>
       </nav>

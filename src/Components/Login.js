@@ -27,7 +27,6 @@ const Login = () => {
     if(loginDetails.ok === true) {
       showTheAlert("Logged In : ", "You Are now Logged In")
       let details = await loginDetails.json()
-      console.log(details);
       localStorage.setItem("token", details.authapi)
       navigate("/")
     }
@@ -51,13 +50,12 @@ const Login = () => {
           ...theme
         }}
       >
-        <div className="row g-3 align-items-center mb-5">
-          <div className="col-auto">
-            <label htmlFor="inputPassword6" className="col-form-label">
+        <h3>Login to Continue with iNoteBook</h3>
+        <div className="row g-3 align-items-center my-3">
+          <div className="container mb-2">
+            <label htmlFor="inputPassword6" className="">
               Username
             </label>
-          </div>
-          <div className="col-auto">
             <input
               type="text"
               id="inputUsername"
@@ -71,12 +69,10 @@ const Login = () => {
           </div>
         </div>
         <div className="row g-3 align-items-center">
-          <div className="col-auto">
-            <label htmlFor="inputPassword6" className="col-form-label">
+          <div className="container">
+            <label htmlFor="inputPassword6" className="">
               Password
             </label>
-          </div>
-          <div className="col-auto">
             <input
               type="password"
               id="inputPassword6"

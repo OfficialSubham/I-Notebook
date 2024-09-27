@@ -3,12 +3,19 @@ import NoteContext from "../context/notes/noteContext";
 import Note from "./Note";
 import AddNote from "./AddNote";
 import Modal from "./Modal";
+import {useNavigate} from 'react-router-dom'
 const Home = (props) => {
   const { note, getAllNotes, setUpdateThisNote } = useContext(NoteContext);
+  const navigate = useNavigate()
   useEffect(() => {
     // eslint-disable-next-line
-    getAllNotes();
-  }, []);
+    if(localStorage.getItem("token")) {
+      getAllNotes();
+    }
+    else{
+      navigate("/login")
+    }
+  });
 
   const updateNote =(currentNote)=> {
     setUpdateThisNote(currentNote)

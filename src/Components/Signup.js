@@ -36,8 +36,8 @@ const Signup = () => {
         });
         console.log(userSignUp);
         if (userSignUp.ok === true) {
-          const authToken = await userSignUp.json().authapi;
-          localStorage.setItem("authToken", authToken);
+          const authToken = await userSignUp.json();
+          localStorage.setItem("token", authToken.authapi);
           navigate("/");
         }
       }
@@ -59,7 +59,8 @@ const Signup = () => {
           ...theme,
         }}
       >
-        <div className="container">
+        <h3>Sign Up to use iNoteBook</h3>
+        <div className="container my-3">
           <label htmlFor="inputPassword6" className="col-form-label">
             Name
           </label>
@@ -137,7 +138,7 @@ const Signup = () => {
           <Link className="btn btn-primary" onClick={handleNewUser}>
             Submit
           </Link>
-          <Link className="btn btn-primary mx-3">Login</Link>
+         
         </div>
       </div>
     </>
